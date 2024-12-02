@@ -90,6 +90,15 @@ We welcome contributions! To contribute:
 
 ---
 
+## 📧 Contact
+
+For any inquiries or feedback, feel free to reach out:
+
+- **University of Kelaniya**  
+- **Email**: info@kelaniya.ac.lk
+
+---
+
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
