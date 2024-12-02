@@ -14,6 +14,7 @@ include 'db/connection.php';
         body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
         .calendar { margin: 20px auto; max-width: 800px; }
         .footer { background: maroon; color: white; padding: 10px; text-align: center; }
+        .event-image { width: 100px; height: auto; } /* Style for images */
     </style>
 </head>
 <body>
@@ -24,6 +25,7 @@ include 'db/connection.php';
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Event Name</th>
                     <th>Date</th>
                     <th>Details</th>
@@ -38,16 +40,23 @@ include 'db/connection.php';
                     while ($row = $result->fetch_assoc()):
                 ?>
                 <tr>
+                    <td>
+                        <?php if (!empty($row['image_path'])): ?>
+                            <img src="<?= htmlspecialchars($row['image_path']); ?>" alt="Event Image" class="event-image">
+                        <?php else: ?>
+                            <img src="images/default.jpg" alt="Default Image" class="event-image"> <!-- Default image -->
+                        <?php endif; ?>
+                    </td>
                     <td><?= htmlspecialchars($row['event_name']); ?></td>
                     <td><?= date("d M Y", strtotime($row['date_time'])); ?></td>
-                    <td><?= htmlspecialchars($row['details']); ?></td>
+                    <td><?= htmlspecialchars($row['event_info']); ?></td>
                 </tr>
                 <?php
                     endwhile;
                 else:
                 ?>
                 <tr>
-                    <td colspan="3">No events found</td>
+                    <td colspan="4">No events found</td>
                 </tr>
                 <?php endif; ?>
             </tbody>
