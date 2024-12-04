@@ -6,6 +6,11 @@ Welcome to the official repository for the **University of Kelaniya EventDesk We
 This platform is designed to showcase upcoming events, parties, and university-branded offerings for students, providing easy access to all event-related details.
 
 ---
+## websiite preview (first stage)
+
+![preview](https://github.com/user-attachments/assets/059f31ac-9f98-4240-916e-70467bcc18cd)
+
+---
 
 ## 🌟 Features
 
