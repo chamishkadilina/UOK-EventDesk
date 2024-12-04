@@ -1,16 +1,17 @@
 
 # 🎓 University of Kelaniya Event Details Website
+---
+## Website preview (first stage)
+
+![preview](https://github.com/user-attachments/assets/059f31ac-9f98-4240-916e-70467bcc18cd)
+
+---
+
 > **Crafted with ❤️ by University of Kelaniya Students**  
 
 Welcome to the official repository for the **University of Kelaniya EventDesk Website**!  
 This platform is designed to showcase upcoming events, parties, and university-branded offerings for students, providing easy access to all event-related details.
 
----
-## websiite preview (first stage)
-
-![preview](https://github.com/user-attachments/assets/059f31ac-9f98-4240-916e-70467bcc18cd)
-
----
 
 ## 🌟 Features
 
