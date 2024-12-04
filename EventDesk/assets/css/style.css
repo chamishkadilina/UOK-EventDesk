@@ -1,0 +1,234 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Enables Flexbox layout */
+}
+
+/* Header styles */
+header {
+  background-color: #8b0000;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Align logo and text */
+}
+
+/* Logo styles
+.logo-img {
+  width: 42px;
+  height: auto;
+  margin-right: 10px;
+} */
+
+.logo-name-img {
+  width: 128px; /* Example size */
+  height: auto;
+}
+
+/* Navigation styles */
+/* Header navigation */
+header nav {
+  background-color: #4d0000;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-start; /* Align header links to the left */
+  align-items: center;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: auto; /* Push header links to the left */
+}
+
+header nav li {
+  margin-right: 2rem; /* Add more space between header links */
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: #ccc;
+}
+
+/* Secondary navigation */
+nav {
+  background-color: #f1f1f1;
+  padding: 0.5rem 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center; /* Center the secondary links */
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #8b0000;
+}
+/* Page container styles */
+.page-container {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* .page-container.home {
+   Add specific styles for homepage if needed 
+} */
+
+/* .page-container.dashboard {
+   Add specific styles for dashboard if needed 
+} */
+
+/* .page-container.about {
+   Add specific styles for about page if needed
+} */
+
+/* Top bar styles */
+.top-bar {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.top-bar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.top-bar li {
+  margin-right: 1rem;
+}
+
+.top-bar a {
+  color: #333;
+  text-decoration: none;
+}
+
+.top-bar a:hover {
+  color: #8b0000;
+}
+
+.top-bar a:focus {
+  outline: 2px dashed #8b0000; /* Accessibility for keyboard navigation */
+}
+
+/* Footer styles */
+.site-footer {
+  background-color: #4c1c1c;
+  color: white;
+  padding: 20px 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Flexbox layout for footer content */
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Distribute space evenly between sections */
+  align-items: center; /* Align items vertically */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left section (text) */
+.footer-left {
+  text-align: left;
+  flex: 1;
+}
+
+/* Center section (links) */
+.footer-center {
+  text-align: center;
+  flex: 1;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #f1c40f; /* Hover color */
+  text-decoration: underline;
+}
+
+/* Right section (social icons) */
+.footer-right {
+  text-align: right;
+  flex: 1;
+}
+
+.social-icons {
+  display: flex;
+  gap: 24px; /* Increased spacing between icons */
+  justify-content: flex-end;
+}
+
+.social-icons a img {
+  /* width: 24px; */
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    flex: unset; 
+    margin-bottom: 15px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-links {
+    margin-top: 10px;
+  }
+}
