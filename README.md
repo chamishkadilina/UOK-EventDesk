@@ -1,9 +1,11 @@
 
 # 🎓 University of Kelaniya Event Details Website
 ---
-## Website preview (first stage)
+## Website preview (second stage)
 
-![preview](https://github.com/user-attachments/assets/059f31ac-9f98-4240-916e-70467bcc18cd)
+
+https://github.com/user-attachments/assets/4075529a-253b-4de6-baf8-abb01e801999
+
 
 ---
 
