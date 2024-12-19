@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University of Kelaniya EventDesk</title>
+    <title>University Events Calendar</title>
     
+    <!-- Add required FullCalendar CSS -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- Your existing styles -->
     <style>
+        /* Your existing CSS remains the same */
         :root {
             --primary-color: #631010;
             --secondary-color: #e89920;
@@ -215,14 +219,14 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="faculty-top-bar">
-                <ul>
-                    <li><a href="#">All Faculties</a></li>
-                    <li><a href="#">Commerce & Management</a></li>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Social Sciences</a></li>
-                    <li><a href="#">Computing & Technology</a></li>
-                    <li><a href="#">Medicine</a></li>
-                    <li><a href="#">Humanities</a></li>
+                <ul id="facultyFilter">
+                    <li><a href="#" data-faculty="All Faculties" class="active">All Faculties</a></li>
+                    <li><a href="#" data-faculty="Commerce & Management">Commerce & Management</a></li>
+                    <li><a href="#" data-faculty="Science">Science</a></li>
+                    <li><a href="#" data-faculty="Social Sciences">Social Sciences</a></li>
+                    <li><a href="#" data-faculty="Computing & Technology">Computing & Technology</a></li>
+                    <li><a href="#" data-faculty="Medicine">Medicine</a></li>
+                    <li><a href="#" data-faculty="Humanities">Humanities</a></li>
                 </ul>
             </div>
 
@@ -252,7 +256,7 @@
                                     <p class="mt-3">👆 Click on any event in the calendar to view its details here.</p>
                                 </div>
                                 
-                                <div id="eventContent" class="card-body" style="display: none;">
+                                <div id="eventContent" style="display: none;">
                                     <h3 class="card-title mb-4" id="eventTitle" style="color: var(--primary-color); font-weight: 600;"></h3>
                                     
                                     <div class="detail-label">Date</div>
@@ -277,12 +281,16 @@
 
     <?php include 'templates/footer.php'; ?>
 
+    <!-- Add required JavaScript libraries -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var lastClickedEvent = null;
+            var currentFaculty = 'All Faculties';
             
+            // Initialize calendar
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 headerToolbar: {
@@ -290,21 +298,33 @@
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,dayGridDay'
                 },
-                events: 'get_events.php',
-                displayEventTime: false, // Hide event time
-                eventDisplay: 'block', // Display events as blocks
+                events: {
+                    url: 'get_events.php',
+                    extraParams: function() {
+                        return {
+                            faculty: currentFaculty
+                        };
+                    }
+                },
+                displayEventTime: false,
+                eventDisplay: 'block',
+                height: 'auto', // Add this to ensure proper height
                 eventDidMount: function(info) {
-                    // Set initial color for all events
                     info.el.style.backgroundColor = 'var(--secondary-color)';
                     info.el.style.borderColor = 'var(--secondary-color)';
+                    
+                    // Add faculty badge to event
+                    const eventEl = info.el.getElementsByClassName('fc-event-title')[0];
+                    const facultyBadge = document.createElement('div');
+                    facultyBadge.className = 'event-faculty-badge';
+                    facultyBadge.textContent = info.event.extendedProps.faculty;
+                    eventEl.appendChild(facultyBadge);
                 },
                 eventClick: function(info) {
-                    // Remove selected class from previously clicked event
                     if (lastClickedEvent) {
                         lastClickedEvent.el.classList.remove('selected-event');
                     }
                     
-                    // Add selected class to current event
                     info.el.classList.add('selected-event');
                     lastClickedEvent = info;
                     
@@ -331,6 +351,31 @@
             });
             
             calendar.render();
+            
+            // Handle faculty filter clicks
+            document.getElementById('facultyFilter').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (e.target.tagName === 'A') {
+                    // Update active state
+                    document.querySelectorAll('#facultyFilter a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    
+                    // Update current faculty and refresh events
+                    currentFaculty = e.target.dataset.faculty;
+                    calendar.refetchEvents();
+                    
+                    // Reset event details panel
+                    document.getElementById('initialMessage').style.display = 'block';
+                    document.getElementById('eventContent').style.display = 'none';
+                    if (lastClickedEvent) {
+                        lastClickedEvent.el.classList.remove('selected-event');
+                        lastClickedEvent = null;
+                    }
+                }
+            });
         });
     </script>
 </body>
