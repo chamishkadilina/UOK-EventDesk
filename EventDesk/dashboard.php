@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Events Calendar</title>
     
-    <!-- Add required FullCalendar CSS -->
+    <!-- required FullCalendar CSS -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
-    <!-- Add Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Your existing styles -->
+    <!-- Our styles -->
     <style>
-        /* Your existing CSS remains the same */
         :root {
             --primary-color: #631010;
             --secondary-color: #e89920;
@@ -26,7 +25,6 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-        /* Faculty styles */
         /* Faculty styles */
         .faculty-top-bar {
             background-color: #fff;
