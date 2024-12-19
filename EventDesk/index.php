@@ -17,6 +17,20 @@
             text-align: center;
         }
 
+        .intro {
+            position: relative;
+            max-width: 800px;
+            margin: 20px;
+            opacity: 0; /* Initially hidden */
+            transform: translateX(-100px); /* Start off-screen */
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+
+        .intro.animate {
+            opacity: 1; /* Fade in */
+            transform: translateX(0); /* Slide into position */
+        }
+
         .slideshow-container {
             position: relative;
             max-width: 800px;
@@ -57,7 +71,6 @@
 
         .links-container {
             margin-left: 30px;
-            
             padding: 20px;
             background-color: white;
             border-radius: 8px;
@@ -97,8 +110,17 @@
     include 'templates/header.php';
     include 'templates/navbar.php';
     ?>
-    
+
     <br>
+    <div class="intro" id="intro">
+        <h1>Welcome to University of Kelaniya EventDesk!</h1>
+        <p>
+            This website serves as the university's event calendar, where users can explore and stay updated 
+            on the events happening at the University of Kelaniya. Whether it's academic seminars, cultural programs, 
+            or student-led initiatives, you'll find everything right here!
+        </p>
+    </div>
+
     <div class="page-container home">
         <!-- Slideshow Section -->
         <div class="slideshow-container">
@@ -110,6 +132,7 @@
             <img class="slides" src="assets/images/event6.jpg" alt="Event 6">
             <img class="slides" src="assets/images/event7.jpg" alt="Event 7">
             <img class="slides" src="assets/images/event8.jpg" alt="Event 8">
+          
             <div class="navigation-dots">
                 <span class="dot active" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -144,6 +167,20 @@
     ?>
 
     <script>
+        // Intersection Observer for Scroll Animation
+        const introSection = document.getElementById('intro');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    introSection.classList.add('animate');
+                } else {
+                    introSection.classList.remove('animate');
+                }
+            });
+        });
+
+        observer.observe(introSection);
+
         let slideIndex = 0;
 
         // Function to show the current slide
