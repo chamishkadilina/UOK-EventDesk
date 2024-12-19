@@ -1,6 +1,7 @@
 /* Nav bar Styles*/
 .navbar {
   background-color: #631010;
+  border-bottom: 12px solid #e89920;
 }
 
 .navbar .navbar-brand {

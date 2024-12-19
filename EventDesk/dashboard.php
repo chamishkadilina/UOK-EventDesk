@@ -7,54 +7,58 @@
     
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
     
     <style>
+        :root {
+            --primary-color: #631010;
+            --secondary-color: #e89920;
+            --primary-light: #8a1c1c;
+            --secondary-light: #ffa832;
+            --bg-light: #fff9f2;
+        }
 
-    /* Style for the faculty top bar */
-.faculty-top-bar {
-    background-color: #333; /* Background color of the bar */
-    padding: 10px 0; /* Padding around the bar */
-}
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
 
-.faculty-top-bar > ul {
-    list-style-type: none; /* Removes bullet points from the list */
-    margin: 0;
-    padding: 0;
-    display: flex; /* Displays the list items horizontally */
-    justify-content: center; /* Centers the list items */
-}
+        /* Faculty styles */
+        .faculty-top-bar {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(99, 16, 16, 0.08);
+        }
 
-.faculty-top-bar > ul > li {
-    margin-right: 20px; /* Space between the list items */
-}
+        .faculty-top-bar ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Remove the margin from the last list item */
-.faculty-top-bar > ul > li:last-child {
-    margin-right: 0;
-}
+        .faculty-top-bar ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid rgba(99, 16, 16, 0.1);
+        }
 
-/* Style for each faculty box */
-.faculty-top-bar > ul > li > a {
-    color: white !important; /* Text color */
-    text-decoration: none !important; /* Removes underline */
-    font-size: 16px !important; /* Font size */
-    padding: 10px 20px !important; /* Padding around the text */
-    border-radius: 5px !important; /* Rounded corners for the boxes */
-    background-color: white;  /* White background color */
-    color: #333; /* Dark text color */
-    display: inline-block; /* Make the link appear as a block */
-    width: auto;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-}
-
-/* Hover effect for list items */
-.faculty-top-bar > ul > li > a:hover {
-    background-color: #ADD8E6 !important; /* Light blue background on hover */
-    color: #333 !important; /* Dark text color on hover */
-}
-
+        .faculty-top-bar ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 16, 16, 0.15);
+        }
 
         .main-content {
             min-height: calc(100vh - 200px);
@@ -63,8 +67,12 @@
 
         .page-title {
             margin: 0 1.5rem 2rem;
-            font-size: 1.75rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .calendar-section {
@@ -73,39 +81,37 @@
 
         .calendar-container {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(99, 16, 16, 0.08);
             padding: 1.5rem;
             margin-bottom: 2rem;
-        }
-
-        #calendar {
-            width: 100%;
-            height: auto;
         }
 
         .event-details-container {
             position: sticky;
             top: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         #eventDetails {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(99, 16, 16, 0.08);
             padding: 1.5rem;
         }
 
         #initialMessage {
             text-align: center;
             padding: 3rem 1.5rem;
-            color: #666;
+            color: var(--primary-color);
+        }
+
+        #initialMessage h4 {
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .detail-label {
-            color: #444;
+            color: var(--secondary-color);
             font-weight: 600;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
@@ -117,20 +123,70 @@
             margin-bottom: 1.5rem;
             color: #333;
             line-height: 1.6;
+            padding: 10px;
+            background-color: var(--bg-light);
+            border-radius: 6px;
         }
 
-        .fc-event {
-            background-color: #3498db;
-            border-color: #3498db;
+        /* FullCalendar Customization */
+        .fc {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .fc-button-primary {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .fc-button-primary:hover {
+            background-color: var(--primary-light) !important;
+            border-color: var(--primary-light) !important;
+        }
+
+        /* Override default FullCalendar event styles */
+        .fc .fc-event, 
+        .fc .fc-event-dot {
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
             cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            padding: 4px;
         }
 
-        .fc-event:hover {
-            background-color: #2980b9;
-            border-color: #2980b9;
-            transform: scale(1.06);
+        .fc .fc-event:hover {
+            background-color: var(--secondary-light) !important;
+            border-color: var(--secondary-light) !important;
+            transform: scale(1.02);
+        }
+
+        /* Selected event style */
+        .fc .fc-event.selected-event {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+
+        /* Hide time from event title */
+        .fc-event-title-container {
+            text-align: center;
+        }
+
+        .fc-event-time {
+            display: none !important;
+        }
+
+        .fc-daygrid-day:hover {
+            background-color: var(--bg-light);
+        }
+
+        .fc-day-today {
+            background-color: rgba(232, 153, 32, 0.1) !important;
+        }
+
+        .fc-toolbar-title {
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         @media (max-width: 992px) {
@@ -145,8 +201,11 @@
             #eventDetails {
                 margin-top: 2rem;
             }
+
+            .faculty-top-bar ul {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
-        
     </style>
 </head>
 <body>
@@ -158,16 +217,24 @@
             <div class="faculty-top-bar">
                 <ul>
                     <li><a href="#">All Faculties</a></li>
-                    <li><a href="#">Faculty of Commerce & Management Studies</a></li>
-                    <li><a href="#">Faculty of Science</a></li>
-                    <li><a href="#">Faculty of Social Sciences</a></li>
-                    <li><a href="#">Faculty of Computing & Technology</a></li>
-                    <li><a href="#">Faculty of Medicine</a></li>
-                    <li><a href="#">Faculty of Humanities</a></li>
+                    <li><a href="#">Commerce & Management</a></li>
+                    <li><a href="#">Science</a></li>
+                    <li><a href="#">Social Sciences</a></li>
+                    <li><a href="#">Computing & Technology</a></li>
+                    <li><a href="#">Medicine</a></li>
+                    <li><a href="#">Humanities</a></li>
                 </ul>
             </div>
 
-            <h3 class="page-title">Upcoming Events 🗓️</h3>
+            <h3 class="page-title">
+                <span>Upcoming Events</span>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+            </h3>
             
             <div class="calendar-section">
                 <div class="row">
@@ -186,7 +253,7 @@
                                 </div>
                                 
                                 <div id="eventContent" class="card-body" style="display: none;">
-                                    <h3 class="card-title mb-4" id="eventTitle"></h3>
+                                    <h3 class="card-title mb-4" id="eventTitle" style="color: var(--primary-color); font-weight: 600;"></h3>
                                     
                                     <div class="detail-label">Date</div>
                                     <div class="detail-value" id="eventDate"></div>
@@ -224,12 +291,21 @@
                     right: 'dayGridMonth,dayGridWeek,dayGridDay'
                 },
                 events: 'get_events.php',
+                displayEventTime: false, // Hide event time
+                eventDisplay: 'block', // Display events as blocks
+                eventDidMount: function(info) {
+                    // Set initial color for all events
+                    info.el.style.backgroundColor = 'var(--secondary-color)';
+                    info.el.style.borderColor = 'var(--secondary-color)';
+                },
                 eventClick: function(info) {
+                    // Remove selected class from previously clicked event
                     if (lastClickedEvent) {
-                        lastClickedEvent.el.style.backgroundColor = '#3498db';
+                        lastClickedEvent.el.classList.remove('selected-event');
                     }
                     
-                    info.el.style.backgroundColor = '#2c3e50';
+                    // Add selected class to current event
+                    info.el.classList.add('selected-event');
                     lastClickedEvent = info;
                     
                     fetch('get_events.php?id=' + info.event.id)
