@@ -8,6 +8,7 @@
     <a class="navbar-brand" href="index.php">Home Page</a>
     <a class="navbar-brand" href="dashboard.php">DashBoard</a>
     <a class="navbar-brand" href="about.php">About Us</a>
+    <a href="logout.php" class="navbar-brand">Logout</a>
 
     <!-- Collapsible Navbar Section -->
     <div class="collapse navbar-collapse">
