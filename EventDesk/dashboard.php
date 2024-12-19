@@ -10,6 +10,52 @@
     <link rel="stylesheet" href="assets/css/style.css">
     
     <style>
+
+    /* Style for the faculty top bar */
+.faculty-top-bar {
+    background-color: #333; /* Background color of the bar */
+    padding: 10px 0; /* Padding around the bar */
+}
+
+.faculty-top-bar > ul {
+    list-style-type: none; /* Removes bullet points from the list */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Displays the list items horizontally */
+    justify-content: center; /* Centers the list items */
+}
+
+.faculty-top-bar > ul > li {
+    margin-right: 20px; /* Space between the list items */
+}
+
+/* Remove the margin from the last list item */
+.faculty-top-bar > ul > li:last-child {
+    margin-right: 0;
+}
+
+/* Style for each faculty box */
+.faculty-top-bar > ul > li > a {
+    color: white !important; /* Text color */
+    text-decoration: none !important; /* Removes underline */
+    font-size: 16px !important; /* Font size */
+    padding: 10px 20px !important; /* Padding around the text */
+    border-radius: 5px !important; /* Rounded corners for the boxes */
+    background-color: white;  /* White background color */
+    color: #333; /* Dark text color */
+    display: inline-block; /* Make the link appear as a block */
+    width: auto;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect for list items */
+.faculty-top-bar > ul > li > a:hover {
+    background-color: #ADD8E6 !important; /* Light blue background on hover */
+    color: #333 !important; /* Dark text color on hover */
+}
+
+
         .main-content {
             min-height: calc(100vh - 200px);
             padding: 2rem 0;
@@ -100,6 +146,7 @@
                 margin-top: 2rem;
             }
         }
+        
     </style>
 </head>
 <body>
