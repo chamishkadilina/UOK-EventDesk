@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 19, 2024 at 11:12 AM
+-- Generation Time: Dec 19, 2024 at 04:44 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -93,6 +93,27 @@ INSERT INTO `events` (`id`, `title`, `start_date`, `start_time`, `venue`, `descr
 (47, 'Psychology Research Symposium', '2025-11-10', '10:00:00', 'Psychology Lab', 'Symposium on recent advances in psychological research.', 'Social Sciences'),
 (48, 'Cloud Computing Workshop', '2025-12-02', '09:00:00', 'Cloud Lab', 'Workshop on cloud technologies and services.', 'Computing & Technology'),
 (49, 'Year-End Research Showcase', '2025-12-08', '10:30:00', 'Research Complex', 'Exhibition of research projects from all departments.', 'All Faculties');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(3, 'admin', '$2y$10$glpFannxuOF.LVGO3dZy4uzFgzsHu8QG6PupKUMU3Yx1Om/j2lxlu');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
