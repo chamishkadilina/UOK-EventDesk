@@ -27,6 +27,7 @@
         }
 
         /* Faculty styles */
+        /* Faculty styles */
         .faculty-top-bar {
             background-color: #fff;
             padding: 20px;
@@ -57,11 +58,31 @@
             border: 1px solid rgba(99, 16, 16, 0.1);
         }
 
-        .faculty-top-bar ul li a:hover {
+        /* New active state styling */
+        .faculty-top-bar ul li a.active {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(99, 16, 16, 0.15);
+        }
+
+        /* Hover state for non-active items */
+        .faculty-top-bar ul li a:not(.active):hover {
+            background-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 16, 16, 0.15);
+        }
+
+        /* Active hover state */
+        .faculty-top-bar ul li a.active:hover {
+            background-color: var(--primary-light);
+        }
+
+        @media (max-width: 992px) {
+            .faculty-top-bar ul {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
 
         .main-content {
