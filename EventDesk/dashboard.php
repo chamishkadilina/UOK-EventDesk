@@ -56,7 +56,7 @@
             border: 1px solid rgba(99, 16, 16, 0.1);
         }
 
-        /* New active state styling */
+        /* active state styling */
         .faculty-top-bar ul li a.active {
             background-color: var(--primary-color);
             color: white;
