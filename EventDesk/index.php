@@ -39,7 +39,5 @@
     // Include the footer template
     include 'templates/footer.php'; 
     ?>
-
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
