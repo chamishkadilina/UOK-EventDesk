@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 $host = 'localhost';
 $dbname = 'university_events';
 $username = 'root';
-$password = ''; // Default XAMPP password is empty
+$password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -17,8 +17,22 @@ try {
         $event = $stmt->fetch(PDO::FETCH_ASSOC);
         echo json_encode($event);
     } else {
-        // Fetch all events
-        $stmt = $pdo->query("SELECT id, title, start_date as start, start_time as time FROM events");
+        // Get faculty filter from query parameter
+        $faculty = isset($_GET['faculty']) ? $_GET['faculty'] : 'All Faculties';
+        
+        // Build the SQL query based on faculty filter
+        if ($faculty === 'All Faculties') {
+            $sql = "SELECT id, title, start_date as start, start_time as time, faculty 
+                   FROM events";
+            $stmt = $pdo->query($sql);
+        } else {
+            $sql = "SELECT id, title, start_date as start, start_time as time, faculty 
+                   FROM events 
+                   WHERE faculty = ? OR faculty = 'All Faculties'";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$faculty]);
+        }
+        
         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         // Format events for FullCalendar
@@ -26,7 +40,8 @@ try {
             return [
                 'id' => $event['id'],
                 'title' => $event['title'],
-                'start' => $event['start'] . 'T' . $event['time']
+                'start' => $event['start'] . 'T' . $event['time'],
+                'faculty' => $event['faculty']
             ];
         }, $events);
         
